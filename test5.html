@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>xxxx</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta content="telephone=no" name="format-detection">
+  <script type="text/javascript"> 
+function change(){ 
+var num=document.getElementById("range"); 
+var location=document.getElementById("show"); 
+location.value=num.value; 
+} 
+</script>
+</head>
+<body>
+<input type="range" min="0" max="255" style="height:100px;width:300px;background:yellow;" onchange="change()" id="range"> <input type="text" id="show">
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>touch</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta content="telephone=no" name="format-detection">
+
+<style type="text/css">
+div{
+    width:200px;
+    height:30px;
+    border:1px solid black;
+} 
+
+img{
+    width:16px;
+    border:1px solid red;
+    margin-top:5px;
+}   
+</style>
+ <script>
+function load (){
+ 
+    document.addEventListener('touchstart',touch,false);
+    document.addEventListener('touchmove',touch,false);
+    document.addEventListener('touchend',touch,false);
+     
+function touch (event){
+    var event = event || window.event;
+         
+    var oInp = document.getElementById("inp");
+ 
+    switch(event.type){
+        case "touchstart":
+            oInp.innerHTML ="Touch started (" + event.touches[0].clientX +"," + event.touches[0].clientY +")";
+            break;
+        case "touchend":
+                oInp.innerHTML ="<br>Touch end (" + event.changedTouches[0].clientX +"," + event.changedTouches[0].clientY +")";
+                break;
+        case "touchmove":
+                event.preventDefault();
+                oInp.innerHTML ="<br>Touch moved (" + event.touches[0].clientX +"," + event.touches[0].clientY +")";
+                break;
+        }
+         
+    }
+}
+    window.addEventListener('load',load,false);
+
+function drag(event){
+
+    event.dataTransfer.setData("Text",event.target.id);
+}
+
+function allowDrop(event){
+    event.preventDefault();
+}
+
+function drop(event){
+    event.preventDefault();
+    var data=event.dataTransfer.getData("Text");
+    event.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+    <div ondragover="allowDrop(event);" ondrop="drop(event)">
+        <img src="./base.gif" id="inp" draggble="true" ondragstart="drag(event);">
+    </div>
+</body>
+</html>

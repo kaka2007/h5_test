@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>touch</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<style type="text/css">
+#big{
+    width:100%;
+    height:30px;
+    border:1px solid black;
+    background-color: #01FDAE;
+    margin-top: 100px;
+    border-radius: 3px;
+}
+#small{
+    width:50%;
+    height:30px;
+    background-color:blue;
+}
+
+#info{
+    width:200px;
+    height:30px;
+    border:none;
+    margin-top: 10px;
+    display:none;
+    margin:10px auto;
+    text-align: center;
+}    
+</style>
+
+<script src="./jquery.min.js"></script>
+<script src="./bootstrap.min.js"></script>
+ <script>
+$(document).ready(function(){
+    var obj=$("#big");
+    var info=$("#info");
+    var small=$("#small");
+    var start="";
+    var end="";
+    var num=0;
+
+    obj.on('touchstart',function(event){
+    event.preventDefault();
+    var touch=event.originalEvent.touches[0];
+    start=touch.clientX;
+    info.attr("style","display:none;");
+    });
+
+    obj.on('touchmove',function(event){
+    event.preventDefault();
+    var touch=event.originalEvent.touches[0];
+    small.attr("style","width:"+touch.clientX+"px;");
+    });
+
+    obj.on('touchend',function(event){
+    event.preventDefault();
+    var touch=event.originalEvent.changedTouches[0];
+    end=touch.clientX;
+
+    aaa=small.width();
+    bbb=aaa/48;
+    ccc=Math.round(bbb*1000);
+    bbb=ccc/1000;
+
+    info.html("移动了"+bbb+"cm");
+    info.attr("style","display:block;");
+    });
+
+
+})
+</script>
+<script type="text/javascript" src="http://www.coding123.net/getip.ashx?js=1"></script>
+<script>
+
+</script>
+</head>
+<body>
+<img style="position:absolute;left:0px;top:0px;width:100%;height:100%;z-Index:-1;" src="back.jpg" />
+    <div id="big"><div id="small"></div></div>
+    <div id="info"></div>
+</body>
+</html>
