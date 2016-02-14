@@ -33,6 +33,7 @@
 
 <script src="./jquery.min.js"></script>
 <script src="./bootstrap.min.js"></script>
+<script src="./bootstrap.min.css"></script>
  <script>
 $(document).ready(function(){
     var obj=$("#big");
@@ -42,13 +43,11 @@ $(document).ready(function(){
     var end="";
     var num=0;
 
-    $.alert({
-    title: 'Alert!',
-    content: 'Alert! alert! alert!',
-    confirm: function(){
-        alert('the user clicked yes');
-             }
-        }); 
+     $.teninedialog({
+            title:'系统提示',
+            content:'确认删除本条记录?'
+        });
+
 
     obj.on('touchstart',function(event){
     event.preventDefault();
