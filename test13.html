@@ -41,7 +41,7 @@ $(document).ready(function(){
     var start="";
     var end="";
     var num=0;
-    alert("221");
+
     obj.on('touchstart',function(event){
     event.preventDefault();
     var touch=event.originalEvent.touches[0];
@@ -67,12 +67,15 @@ $(document).ready(function(){
 
     info.html("移动了"+bbb+"cm");
     info.attr("style","display:block;");
-    if(bbb<=1){
-        alert("111");
-        }
+
+    $.alert({
+    title: 'Alert!',
+    content: bbb,
+    confirm: function(){
+        alert('the user clicked yes');
+             }
+        });     
     });
-
-
 })
 </script>
 <script type="text/javascript" src="http://www.coding123.net/getip.ashx?js=1"></script>
