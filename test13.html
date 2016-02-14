@@ -41,7 +41,7 @@ $(document).ready(function(){
     var start="";
     var end="";
     var num=0;
-
+    alert("221");
     obj.on('touchstart',function(event){
     event.preventDefault();
     var touch=event.originalEvent.touches[0];
@@ -67,10 +67,9 @@ $(document).ready(function(){
 
     info.html("移动了"+bbb+"cm");
     info.attr("style","display:block;");
-
-    if(bbb>0.97 && bbb<1){
+    if(bbb<=1){
         alert("111");
-    }
+        }
     });
 
 
